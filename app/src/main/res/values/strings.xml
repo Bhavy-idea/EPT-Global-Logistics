@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">G Amazing Task</string>
+    <string name="animation">Animation</string>
+    <string name="checkbox_1">checkbox 1</string>
+    <string name="radiobutton_1">radiobutton 1</string>
+    <string name="edittext_1">edittext 1</string>
+    <string name="check_box">Check Box</string>
+    <string name="radio_button">Radio Button</string>
+    <string name="edit_text">Edit Text</string>
+</resources>
