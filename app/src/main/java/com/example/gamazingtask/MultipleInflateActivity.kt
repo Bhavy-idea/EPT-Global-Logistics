@@ -23,7 +23,7 @@ class MultipleInflateActivity : AppCompatActivity() {
         binding = ActivityMultipleInflateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        for (i in 0..25){
+        for (i in 0..499){
             arrayListOfMultiViews.add(MultiData(checkBoxList, radioButtonList,editTextList))
         }
 

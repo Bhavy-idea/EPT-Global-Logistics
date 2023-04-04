@@ -19,7 +19,6 @@ class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : Recycl
     inner class CheckBoxHolder(var view: LayoutInflateBinding) : RecyclerView.ViewHolder(view.root) {
 
         init {
-
             Log.d("data", "HOLDER CALLED $index")
             val editTextList = ArrayList<AppCompatEditText>()
             val radioButtonList = ArrayList<AppCompatRadioButton>()
@@ -45,7 +44,6 @@ class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : Recycl
             arrayListOfMultiViews[counter].editTextList = editTextList
 
             counter ++
-
         }
     }
 
@@ -54,11 +52,15 @@ class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : Recycl
         return CheckBoxHolder(LayoutInflateBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun getItemCount(): Int = 26
+    override fun getItemCount(): Int = 500
 
     override fun onBindViewHolder(holder: CheckBoxHolder, position: Int) {
 
-        Log.d("data", "BIND VIEW HOLDER CALLED ${index ++}")
+        holder.view.linearLayoutCheckBox.removeAllViews()
+
+        for (i in arrayListOfMultiViews[position].checkBoxList){
+            holder.view.linearLayoutCheckBox.addView(i)
+        }
 
         holder.view.buttonAddCheckbox.setOnClickListener {
 
@@ -70,7 +72,11 @@ class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : Recycl
 
                 holder.view.linearLayoutCheckBox.addView(newAddedCheckbox)
 //
+
+
                 arrayListOfMultiViews[position].checkBoxList.add(newAddedCheckbox)
+
+                notifyItemChanged(position)
 
                 Log.d("data", arrayListOfMultiViews[position].checkBoxList.toString())
 
@@ -90,6 +96,8 @@ class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : Recycl
 
                 arrayListOfMultiViews[position].radioButtonList.add(newAddedRadiobutton)
 
+                notifyItemChanged(position)
+
             }
         }
 
@@ -103,6 +111,8 @@ class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : Recycl
                 holder.view.linearLayoutEditText.addView(newAddedEdittext)
 
                 arrayListOfMultiViews[position].editTextList.add(newAddedEdittext)
+
+                notifyItemChanged(position)
 
             }
         }

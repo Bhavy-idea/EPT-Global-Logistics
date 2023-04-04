@@ -11,9 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GAmazingTask"
         tools:targetApi="31">
+
         <activity
             android:name=".MultipleInflateActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,10 +23,10 @@
         </activity>
         <activity
             android:name=".CircleActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".ZAnimationActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".GlowButtonActivity"
             android:exported="false" />
