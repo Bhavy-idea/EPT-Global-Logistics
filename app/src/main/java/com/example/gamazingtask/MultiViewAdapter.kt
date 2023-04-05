@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.appcompat.widget.*
+import androidx.core.view.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gamazingtask.databinding.LayoutInflateBinding
 
@@ -23,6 +24,7 @@ class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : Recycl
             val editTextList = ArrayList<AppCompatEditText>()
             val radioButtonList = ArrayList<AppCompatRadioButton>()
             val checkBoxList = ArrayList<AppCompatCheckBox>()
+            val checkBoxVisibilityList = ArrayList<Boolean>()
 
             val checkBox = LayoutInflater.from(itemView.context).inflate(R.layout.layout_checkbox, null, false) as AppCompatCheckBox
             val radioButton = LayoutInflater.from(itemView.context).inflate(R.layout.layout_radiobutton, null, false) as AppCompatRadioButton
@@ -38,10 +40,12 @@ class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : Recycl
             checkBoxList.add(checkBox)
             radioButtonList.add(radioButton)
             editTextList.add(editText)
+            checkBoxVisibilityList.add(true)
 
             arrayListOfMultiViews[counter].checkBoxList = checkBoxList
             arrayListOfMultiViews[counter].radioButtonList = radioButtonList
             arrayListOfMultiViews[counter].editTextList = editTextList
+            arrayListOfMultiViews[counter].checkBoxVisibilityList = checkBoxVisibilityList
 
             counter ++
         }
@@ -52,14 +56,21 @@ class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : Recycl
         return CheckBoxHolder(LayoutInflateBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun getItemCount(): Int = 500
+    override fun getItemCount(): Int = 26
 
     override fun onBindViewHolder(holder: CheckBoxHolder, position: Int) {
 
-        holder.view.linearLayoutCheckBox.removeAllViews()
+        val visibilityList = ArrayList<Boolean>()
+        val listSize = arrayListOfMultiViews[position].checkBoxList.size
 
-        for (i in arrayListOfMultiViews[position].checkBoxList){
-            holder.view.linearLayoutCheckBox.addView(i)
+        for (i in 1 .. listSize) {
+            visibilityList.add(true)
+        }
+
+        arrayListOfMultiViews[position].checkBoxVisibilityList = visibilityList
+
+        for (i in arrayListOfMultiViews[position].checkBoxVisibilityList.indices){
+            arrayListOfMultiViews[position].checkBoxList[i].isVisible = true
         }
 
         holder.view.buttonAddCheckbox.setOnClickListener {
@@ -71,14 +82,8 @@ class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : Recycl
                 newAddedCheckbox.setBackgroundColor(Color.parseColor(hexCodeGenerator()))
 
                 holder.view.linearLayoutCheckBox.addView(newAddedCheckbox)
-//
-
 
                 arrayListOfMultiViews[position].checkBoxList.add(newAddedCheckbox)
-
-                notifyItemChanged(position)
-
-                Log.d("data", arrayListOfMultiViews[position].checkBoxList.toString())
 
             } else {
                 Toast.makeText(it.context, arrayListOfMultiViews[position].checkBoxList.size.toString(), Toast.LENGTH_SHORT).show()

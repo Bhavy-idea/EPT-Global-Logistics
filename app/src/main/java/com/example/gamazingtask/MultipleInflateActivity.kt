@@ -10,10 +10,11 @@ import com.example.gamazingtask.databinding.ActivityMultipleInflateBinding
 
 class MultipleInflateActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMultipleInflateBinding
+    private lateinit var binding: ActivityMultipleInflateBinding
     private var arrayListOfMultiViews = ArrayList<MultiData>()
-    private lateinit var multiViewAdapter : MultiViewAdapter
+    private lateinit var multiViewAdapter: MultiViewAdapter
 
+    var checkBoxVisibilityList = ArrayList<Boolean>()
     var checkBoxList = ArrayList<AppCompatCheckBox>()
     var radioButtonList = ArrayList<AppCompatRadioButton>()
     var editTextList = ArrayList<AppCompatEditText>()
@@ -23,8 +24,8 @@ class MultipleInflateActivity : AppCompatActivity() {
         binding = ActivityMultipleInflateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        for (i in 0..499){
-            arrayListOfMultiViews.add(MultiData(checkBoxList, radioButtonList,editTextList))
+        for (i in 0 .. 25) {
+            arrayListOfMultiViews.add(MultiData(checkBoxVisibilityList,checkBoxList, radioButtonList, editTextList))
         }
 
         multiViewAdapter = MultiViewAdapter(arrayListOfMultiViews)
@@ -32,8 +33,5 @@ class MultipleInflateActivity : AppCompatActivity() {
         binding.recyclerViewMultipleView.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewMultipleView.adapter = multiViewAdapter
 
-
     }
-
-
 }
