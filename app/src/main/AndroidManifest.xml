@@ -11,9 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GAmazingTask"
         tools:targetApi="31">
-
         <activity
-            android:name=".MultipleInflateActivity"
+            android:name=".HeaderFooterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +20,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DynamicGridLayout"
+            android:exported="true"/>
+        <activity
+            android:name=".StaggeredActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".MultipleInflateActivity"
+            android:exported="false"/>
         <activity
             android:name=".CircleActivity"
             android:exported="false" />

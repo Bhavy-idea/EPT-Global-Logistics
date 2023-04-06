@@ -7,4 +7,7 @@
     <string name="check_box">Check Box</string>
     <string name="radio_button">Radio Button</string>
     <string name="edit_text">Edit Text</string>
+    <string name="calculate">Calculate</string>
+    <string name="header">HEADER</string>
+    <string name="footer">FOOTER</string>
 </resources>

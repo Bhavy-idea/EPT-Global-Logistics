@@ -39,11 +39,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <!--        <androidx.appcompat.widget.AppCompatCheckBox-->
-                <!--            android:id="@+id/checkBoxOne"-->
-                <!--            android:layout_width="@dimen/dp_150"-->
-                <!--            android:layout_height="wrap_content"-->
-                <!--            android:text="@string/checkbox_1" />-->
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -65,13 +60,6 @@
                 android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linearLayoutCheckBox">
-
-                <!--        <androidx.appcompat.widget.AppCompatRadioButton-->
-                <!--            android:id="@+id/radioButtonOne"-->
-                <!--            android:layout_width="@dimen/dp_150"-->
-                <!--            android:layout_height="wrap_content"-->
-                <!--            android:text="@string/radiobutton_1" />-->
-
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -93,14 +81,6 @@
                 app:layout_constraintEnd_toStartOf="@id/buttonAddEditText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayoutRadioButton">
-
-                <!--        <androidx.appcompat.widget.AppCompatEditText-->
-                <!--            android:id="@+id/editTextOne"-->
-                <!--            android:layout_width="@dimen/dp_150"-->
-                <!--            android:layout_height="wrap_content"-->
-                <!--            android:hint="@string/edittext_1"-->
-                <!--            app:layout_constraintStart_toStartOf="parent"-->
-                <!--            app:layout_constraintTop_toBottomOf="@+id/linearLayoutRadioButton" />-->
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

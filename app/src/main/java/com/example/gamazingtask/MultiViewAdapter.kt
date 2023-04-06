@@ -1,6 +1,7 @@
 package com.example.gamazingtask
 
 import android.annotation.*
+import android.content.*
 import android.graphics.Color
 import android.util.Log
 import android.view.*
@@ -14,41 +15,9 @@ var index = 0
 
 class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : RecyclerView.Adapter<MultiViewAdapter.CheckBoxHolder>() {
 
-    var counter = 0
-
     @SuppressLint("InflateParams")
     inner class CheckBoxHolder(var view: LayoutInflateBinding) : RecyclerView.ViewHolder(view.root) {
 
-        init {
-            Log.d("data", "HOLDER CALLED $index")
-            val editTextList = ArrayList<AppCompatEditText>()
-            val radioButtonList = ArrayList<AppCompatRadioButton>()
-            val checkBoxList = ArrayList<AppCompatCheckBox>()
-            val checkBoxVisibilityList = ArrayList<Boolean>()
-
-            val checkBox = LayoutInflater.from(itemView.context).inflate(R.layout.layout_checkbox, null, false) as AppCompatCheckBox
-            val radioButton = LayoutInflater.from(itemView.context).inflate(R.layout.layout_radiobutton, null, false) as AppCompatRadioButton
-            val editText = LayoutInflater.from(itemView.context).inflate(R.layout.layout_edittext, null, false) as AppCompatEditText
-
-            checkBox.setBackgroundColor(Color.parseColor(hexCodeGenerator()))
-            view.linearLayoutCheckBox.addView(checkBox)
-            radioButton.setBackgroundColor(Color.parseColor(hexCodeGenerator()))
-            view.linearLayoutRadioButton.addView(radioButton)
-            editText.setBackgroundColor(Color.parseColor(hexCodeGenerator()))
-            view.linearLayoutEditText.addView(editText)
-
-            checkBoxList.add(checkBox)
-            radioButtonList.add(radioButton)
-            editTextList.add(editText)
-            checkBoxVisibilityList.add(true)
-
-            arrayListOfMultiViews[counter].checkBoxList = checkBoxList
-            arrayListOfMultiViews[counter].radioButtonList = radioButtonList
-            arrayListOfMultiViews[counter].editTextList = editTextList
-            arrayListOfMultiViews[counter].checkBoxVisibilityList = checkBoxVisibilityList
-
-            counter ++
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CheckBoxHolder {
@@ -56,103 +25,119 @@ class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : Recycl
         return CheckBoxHolder(LayoutInflateBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun getItemCount(): Int = 26
+    override fun getItemCount(): Int = arrayListOfMultiViews.size
 
     override fun onBindViewHolder(holder: CheckBoxHolder, position: Int) {
 
-        val visibilityList = ArrayList<Boolean>()
-        val listSize = arrayListOfMultiViews[position].checkBoxList.size
+        holder.view.linearLayoutCheckBox.removeAllViews()
+        holder.view.linearLayoutRadioButton.removeAllViews()
+        holder.view.linearLayoutEditText.removeAllViews()
 
-        for (i in 1 .. listSize) {
-            visibilityList.add(true)
+        val sizeOfCheckboxList = arrayListOfMultiViews[position].checkBoxList.size
+
+        for (i in 0 until sizeOfCheckboxList) {
+            holder.view.linearLayoutCheckBox.removeView(arrayListOfMultiViews[position].checkBoxList[i])
+            holder.view.linearLayoutCheckBox.addView(arrayListOfMultiViews[position].checkBoxList[i], i)
         }
 
-        arrayListOfMultiViews[position].checkBoxVisibilityList = visibilityList
+        val sizeOfRadiobuttonList = arrayListOfMultiViews[position].radioButtonList.size
 
-        for (i in arrayListOfMultiViews[position].checkBoxVisibilityList.indices){
-            arrayListOfMultiViews[position].checkBoxList[i].isVisible = true
+        for (i in 0 until sizeOfRadiobuttonList) {
+            holder.view.linearLayoutRadioButton.removeView(arrayListOfMultiViews[position].radioButtonList[i])
+            holder.view.linearLayoutRadioButton.addView(arrayListOfMultiViews[position].radioButtonList[i], i)
+        }
+
+        val sizeOfEditTextList = arrayListOfMultiViews[position].editTextList.size
+
+        for (i in 0 until sizeOfEditTextList) {
+            holder.view.linearLayoutEditText.removeView(arrayListOfMultiViews[position].editTextList[i])
+            holder.view.linearLayoutEditText.addView(arrayListOfMultiViews[position].editTextList[i], i)
         }
 
         holder.view.buttonAddCheckbox.setOnClickListener {
 
             if (arrayListOfMultiViews[position].checkBoxList.size < 3) {
-
-                val newAddedCheckbox = LayoutInflater.from(it.context).inflate(R.layout.layout_checkbox, null, false) as AppCompatCheckBox
-
-                newAddedCheckbox.setBackgroundColor(Color.parseColor(hexCodeGenerator()))
-
-                holder.view.linearLayoutCheckBox.addView(newAddedCheckbox)
-
-                arrayListOfMultiViews[position].checkBoxList.add(newAddedCheckbox)
+                val addedCheckBox = addCheckbox(it.context)
+                holder.view.linearLayoutCheckBox.addView(addedCheckBox)
+                arrayListOfMultiViews[position].checkBoxList.add(addedCheckBox)
 
             } else {
-                Toast.makeText(it.context, arrayListOfMultiViews[position].checkBoxList.size.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(it.context, "Cannot add more then 3 items", Toast.LENGTH_SHORT).show()
             }
+
         }
 
         holder.view.buttonAddRadioButton.setOnClickListener {
 
             if (arrayListOfMultiViews[position].radioButtonList.size < 3) {
-                val newAddedRadiobutton = LayoutInflater.from(it.context).inflate(R.layout.layout_radiobutton, null, false) as AppCompatRadioButton
-
-                newAddedRadiobutton.setBackgroundColor(Color.parseColor(hexCodeGenerator()))
-
-                holder.view.linearLayoutRadioButton.addView(newAddedRadiobutton)
-
-                arrayListOfMultiViews[position].radioButtonList.add(newAddedRadiobutton)
-
-                notifyItemChanged(position)
-
+                val addedRadioButton = addRadioButton(it.context)
+                holder.view.linearLayoutRadioButton.addView(addedRadioButton)
+                arrayListOfMultiViews[position].radioButtonList.add(addedRadioButton)
+            }else {
+                Toast.makeText(it.context, "Cannot add more then 3 items", Toast.LENGTH_SHORT).show()
             }
         }
 
         holder.view.buttonAddEditText.setOnClickListener {
 
             if (arrayListOfMultiViews[position].editTextList.size < 3) {
-                val newAddedEdittext = LayoutInflater.from(it.context).inflate(R.layout.layout_edittext, null, false) as AppCompatEditText
-
-                newAddedEdittext.setBackgroundColor(Color.parseColor(hexCodeGenerator()))
-
-                holder.view.linearLayoutEditText.addView(newAddedEdittext)
-
-                arrayListOfMultiViews[position].editTextList.add(newAddedEdittext)
-
-                notifyItemChanged(position)
-
+                val addedEditText = addEditText(it.context)
+                holder.view.linearLayoutEditText.addView(addedEditText)
+                arrayListOfMultiViews[position].editTextList.add(addedEditText)
+            }else {
+                Toast.makeText(it.context, "Cannot add more then 3 items", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    fun hexCodeGenerator(): String {
-
-        val colorList = arrayListOf<Char>(
-            'A',
-            'B',
-            'C',
-            'D',
-            'E',
-            'F',
-            '1',
-            '2',
-            '3',
-            '4',
-            '5',
-            '6',
-            '7',
-            '8',
-            '9',
-            '0'
-        )
-
-        var colorCode = ""
-
-        for (i in 0 .. 5) {
-            val charactor = colorList.random()
-            colorCode += charactor
-        }
-
-        return "#$colorCode"
-
+    private fun addCheckbox(context: Context): AppCompatCheckBox {
+        val newAddedCheckbox = LayoutInflater.from(context).inflate(R.layout.layout_checkbox, null, false) as AppCompatCheckBox
+        newAddedCheckbox.setBackgroundColor(Color.parseColor(hexCodeGenerator()))
+        return newAddedCheckbox
     }
+
+    private fun addRadioButton(context: Context): AppCompatRadioButton {
+        val newAddedRadiobutton = LayoutInflater.from(context).inflate(R.layout.layout_radiobutton, null, false) as AppCompatRadioButton
+        newAddedRadiobutton.setBackgroundColor(Color.parseColor(hexCodeGenerator()))
+        return newAddedRadiobutton
+    }
+
+    private fun addEditText(context: Context): AppCompatEditText {
+        val newAddedEdittext = LayoutInflater.from(context).inflate(R.layout.layout_edittext, null, false) as AppCompatEditText
+        newAddedEdittext.setBackgroundColor(Color.parseColor(hexCodeGenerator()))
+        return newAddedEdittext
+    }
+
+}
+
+fun hexCodeGenerator(): String {
+
+    val colorList = arrayListOf<Char>(
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        '0'
+    )
+
+    var colorCode = ""
+
+    for (i in 0 .. 5) {
+        val charactor = colorList.random()
+        colorCode += charactor
+    }
+
+    return "#$colorCode"
 
 }
