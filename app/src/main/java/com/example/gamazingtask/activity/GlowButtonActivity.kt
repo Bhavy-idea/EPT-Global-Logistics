@@ -1,9 +1,10 @@
-package com.example.gamazingtask
+package com.example.gamazingtask.activity
 
 import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.AppCompatButton
+import com.example.gamazingtask.*
 
 class GlowButtonActivity : AppCompatActivity() {
 

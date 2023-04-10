@@ -1,4 +1,4 @@
-package com.example.gamazingtask
+package com.example.gamazingtask.adapter
 
 import android.view.*
 import androidx.recyclerview.widget.RecyclerView

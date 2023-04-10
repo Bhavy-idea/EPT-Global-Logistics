@@ -1,4 +1,4 @@
-package com.example.gamazingtask
+package com.example.gamazingtask.activity
 
 import android.graphics.drawable.*
 import android.os.*
@@ -6,6 +6,7 @@ import android.view.*
 import android.view.animation.*
 import android.view.animation.Animation.AnimationListener
 import androidx.appcompat.app.*
+import com.example.gamazingtask.*
 
 class ZAnimationActivity : AppCompatActivity() {
 

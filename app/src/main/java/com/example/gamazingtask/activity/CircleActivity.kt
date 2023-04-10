@@ -1,11 +1,10 @@
-package com.example.gamazingtask
+package com.example.gamazingtask.activity
 
-import android.annotation.*
 import android.app.*
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.*
 import android.view.animation.*
+import com.example.gamazingtask.*
 
 class CircleActivity : Activity() {
 
@@ -17,13 +16,7 @@ class CircleActivity : Activity() {
 
         viewCircle = findViewById(R.id.viewCircle)
 
-        viewCircle.setOnClickListener {
 
-                val anim: Animation = MyAnimation(viewCircle, 200f)
-                anim.duration = 3000
-                viewCircle.startAnimation(anim)
-
-        }
     }
 }
 

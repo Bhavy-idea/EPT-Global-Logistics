@@ -1,10 +1,11 @@
-package com.example.gamazingtask
+package com.example.gamazingtask.adapter
 
 import android.view.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gamazingtask.databinding.LayoutFooterBinding
 import com.example.gamazingtask.databinding.LayoutHeaderBinding
 import com.example.gamazingtask.databinding.LayoutUserBinding
+import com.example.gamazingtask.model.*
 
 class HeaderAdapter(private var userList : ArrayList<User>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

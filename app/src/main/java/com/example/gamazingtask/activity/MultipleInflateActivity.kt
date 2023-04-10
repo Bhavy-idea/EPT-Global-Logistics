@@ -1,4 +1,4 @@
-package com.example.gamazingtask
+package com.example.gamazingtask.activity
 
 import android.graphics.*
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,10 @@ import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gamazingtask.*
+import com.example.gamazingtask.adapter.*
 import com.example.gamazingtask.databinding.ActivityMultipleInflateBinding
+import com.example.gamazingtask.model.*
 
 class MultipleInflateActivity : AppCompatActivity() {
 
@@ -22,12 +25,10 @@ class MultipleInflateActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         for (i in 0 .. 25) {
+
             val editTextList = ArrayList<AppCompatEditText>()
             val radioButtonList = ArrayList<AppCompatRadioButton>()
             val checkBoxList = ArrayList<AppCompatCheckBox>()
-            val isCheckBoxChecked = ArrayList<Boolean>()
-            val isRadioButtonChecked = ArrayList<Boolean>()
-            val filledEditTextList = ArrayList<Boolean>()
 
             val checkBox = LayoutInflater.from(this).inflate(R.layout.layout_checkbox, null, false) as AppCompatCheckBox
             val radioButton = LayoutInflater.from(this).inflate(R.layout.layout_radiobutton, null, false) as AppCompatRadioButton
@@ -41,7 +42,7 @@ class MultipleInflateActivity : AppCompatActivity() {
             radioButtonList.add(radioButton)
             editTextList.add(editText)
 
-            arrayListOfMultiViews.add(MultiData(isCheckBoxChecked, checkBoxList, isRadioButtonChecked, radioButtonList, editTextList, filledEditTextList))
+            arrayListOfMultiViews.add(MultiData(checkBoxList, radioButtonList, editTextList))
         }
 
         multiViewAdapter = MultiViewAdapter(arrayListOfMultiViews)

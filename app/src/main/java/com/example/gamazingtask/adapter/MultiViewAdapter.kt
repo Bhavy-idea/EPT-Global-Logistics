@@ -1,4 +1,4 @@
-package com.example.gamazingtask
+package com.example.gamazingtask.adapter
 
 import android.annotation.*
 import android.content.*
@@ -9,16 +9,16 @@ import android.widget.*
 import androidx.appcompat.widget.*
 import androidx.core.view.*
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gamazingtask.*
 import com.example.gamazingtask.databinding.LayoutInflateBinding
+import com.example.gamazingtask.model.*
 
 var index = 0
 
 class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : RecyclerView.Adapter<MultiViewAdapter.CheckBoxHolder>() {
 
     @SuppressLint("InflateParams")
-    inner class CheckBoxHolder(var view: LayoutInflateBinding) : RecyclerView.ViewHolder(view.root) {
-
-    }
+    inner class CheckBoxHolder(var view: LayoutInflateBinding) : RecyclerView.ViewHolder(view.root) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CheckBoxHolder {
         Log.d("data", "CREATE VIEW HOLDER CALLED $index")

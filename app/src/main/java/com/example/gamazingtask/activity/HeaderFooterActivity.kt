@@ -1,9 +1,11 @@
-package com.example.gamazingtask
+package com.example.gamazingtask.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gamazingtask.adapter.*
 import com.example.gamazingtask.databinding.ActivityHeaderFooterBinding
+import com.example.gamazingtask.model.*
 
 class HeaderFooterActivity : AppCompatActivity() {
 
@@ -21,6 +23,7 @@ class HeaderFooterActivity : AppCompatActivity() {
         arrayListUser.add(User("Rahul"))
         arrayListUser.add(User("Jignesh"))
         arrayListUser.add(User("Vatsal"))
+
 
         binding.recyclerViewHeader.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewHeader.adapter = HeaderAdapter(arrayListUser)

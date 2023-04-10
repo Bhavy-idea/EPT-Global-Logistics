@@ -1,8 +1,10 @@
-package com.example.gamazingtask
+package com.example.gamazingtask.activity
 
 import android.os.*
 import androidx.appcompat.app.*
 import androidx.recyclerview.widget.*
+import com.example.gamazingtask.*
+import com.example.gamazingtask.adapter.*
 import com.example.gamazingtask.databinding.*
 
 class StaggeredActivity : AppCompatActivity() {
@@ -21,7 +23,7 @@ class StaggeredActivity : AppCompatActivity() {
         imageList.add(R.drawable.img_2)
         imageList.add(R.drawable.img_3)
         imageList.add(R.drawable.img_4)
-        imageList.add(R.drawable.img_1)
+        imageList.add(R.drawable.img_5)
         imageList.add(R.drawable.img_6)
         imageList.add(R.drawable.img_7)
         imageList.add(R.drawable.img_8)
@@ -44,6 +46,7 @@ class StaggeredActivity : AppCompatActivity() {
         val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         binding.recyclerViewStaggered.layoutManager = layoutManager
         binding.recyclerViewStaggered.adapter = staggeredAdapter
+
 
 //        layoutManager.spanSizeLookup = object : SpanSizeLookup() {
 //            override fun getSpanSize(position: Int): Int {

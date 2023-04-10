@@ -1,4 +1,4 @@
-package com.example.gamazingtask
+package com.example.gamazingtask.activity
 
 import android.annotation.*
 import androidx.appcompat.app.AppCompatActivity

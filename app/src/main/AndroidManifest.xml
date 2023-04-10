@@ -12,8 +12,8 @@
         android:theme="@style/Theme.GAmazingTask"
         tools:targetApi="31">
         <activity
-            android:name=".HeaderFooterActivity"
-            android:exported="true">
+            android:name=".activity.CollapsiveToolbarActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,27 +21,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DynamicGridLayout"
+            android:name=".activity.HeaderFooterActivity"
             android:exported="true"/>
         <activity
-            android:name=".StaggeredActivity"
+            android:name=".activity.DynamicGridLayout"
+            android:exported="true" />
+        <activity
+            android:name=".activity.StaggeredActivity"
             android:exported="true">
 
         </activity>
         <activity
-            android:name=".MultipleInflateActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".CircleActivity"
+            android:name=".activity.MultipleInflateActivity"
             android:exported="false" />
         <activity
-            android:name=".ZAnimationActivity"
+            android:name=".activity.CircleActivity"
             android:exported="false" />
         <activity
-            android:name=".GlowButtonActivity"
+            android:name=".activity.ZAnimationActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.GlowButtonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MainActivity"
             android:exported="true" />
     </application>
 

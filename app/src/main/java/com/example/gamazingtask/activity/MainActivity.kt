@@ -1,7 +1,8 @@
-package com.example.gamazingtask
+package com.example.gamazingtask.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.gamazingtask.*
 
 class MainActivity : AppCompatActivity() {
 
