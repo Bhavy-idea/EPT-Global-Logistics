@@ -10,4 +10,6 @@
     <string name="calculate">Calculate</string>
     <string name="header">HEADER</string>
     <string name="footer">FOOTER</string>
+    <string name="search_here">Search Here..</string>
+    <string name="users">Users</string>
 </resources>

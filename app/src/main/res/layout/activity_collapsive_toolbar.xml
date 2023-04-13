@@ -19,6 +19,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:expandedTitleTextAppearance="@style/Theme.GAmazingTask"
             app:collapsedTitleTextAppearance="@style/Theme.GAmazingTask"
+            app:contentScrim="@color/white"
             app:title="@string/animation"
             >
 

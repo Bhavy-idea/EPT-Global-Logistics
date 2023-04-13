@@ -7,11 +7,16 @@ import com.example.gamazingtask.*
 import com.example.gamazingtask.adapter.*
 import com.example.gamazingtask.databinding.*
 
+data class HeroList(
+    var image: Int,
+    var name: String
+)
+
 class StaggeredActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityStaggeredBinding
+    private lateinit var binding: ActivityStaggeredBinding
     private lateinit var staggeredAdapter: StaggeredAdapter
-    var imageList = ArrayList<Int>()
+    var heroesList = ArrayList<HeroList>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,34 +24,45 @@ class StaggeredActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        imageList.add(R.drawable.img_1)
-        imageList.add(R.drawable.img_2)
-        imageList.add(R.drawable.img_3)
-        imageList.add(R.drawable.img_4)
-        imageList.add(R.drawable.img_5)
-        imageList.add(R.drawable.img_6)
-        imageList.add(R.drawable.img_7)
-        imageList.add(R.drawable.img_8)
-        imageList.add(R.drawable.img_9)
-        imageList.add(R.drawable.img_10)
-        imageList.add(R.drawable.img_11)
-        imageList.add(R.drawable.img_12)
-        imageList.add(R.drawable.img_13)
-        imageList.add(R.drawable.img_14)
-        imageList.add(R.drawable.img_15)
-        imageList.add(R.drawable.img_16)
-        imageList.add(R.drawable.img_17)
-        imageList.add(R.drawable.img_18)
-        imageList.add(R.drawable.img_19)
-        imageList.add(R.drawable.img_20)
-        imageList.add(R.drawable.img_21)
-        imageList.add(R.drawable.img_22)
+        heroesList.add(HeroList(R.drawable.img_1, "Black Panther"))
+        heroesList.add(HeroList(R.drawable.img_2, "Batman"))
+        heroesList.add(HeroList(R.drawable.img_3, "Black Adam"))
+        heroesList.add(HeroList(R.drawable.img_4, "Black Panther"))
+        heroesList.add(HeroList(R.drawable.img_5, "Groot"))
+        heroesList.add(HeroList(R.drawable.img_6, "Black Panther"))
+        heroesList.add(HeroList(R.drawable.img_7, "Black Widow"))
+        heroesList.add(HeroList(R.drawable.img_8, "Moon Knight"))
+        heroesList.add(HeroList(R.drawable.img_9, "Superman"))
+        heroesList.add(HeroList(R.drawable.img_10, "Spiderman"))
+        heroesList.add(HeroList(R.drawable.img_11, "Superman"))
+        heroesList.add(HeroList(R.drawable.img_12, "Batman"))
+        heroesList.add(HeroList(R.drawable.img_13, "Superman Vs Batman"))
+        heroesList.add(HeroList(R.drawable.img_14, "Superman"))
+        heroesList.add(HeroList(R.drawable.img_15, "Thor"))
+        heroesList.add(HeroList(R.drawable.img_16, "Thor"))
+        heroesList.add(HeroList(R.drawable.img_17, "Deadpool"))
+        heroesList.add(HeroList(R.drawable.img_18, "Captain America"))
+        heroesList.add(HeroList(R.drawable.img_19, "Wolverine"))
+        heroesList.add(HeroList(R.drawable.img_20, "Thor"))
+        heroesList.add(HeroList(R.drawable.img_21, "Iron man"))
+        heroesList.add(HeroList(R.drawable.img_22, "Captain America"))
 
-        staggeredAdapter = StaggeredAdapter(imageList)
+        staggeredAdapter = StaggeredAdapter(heroesList)
         val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         binding.recyclerViewStaggered.layoutManager = layoutManager
         binding.recyclerViewStaggered.adapter = staggeredAdapter
 
+
+//        binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                binding.searchView.clearFocus()
+//
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//            }
+//
+//        })
 
 //        layoutManager.spanSizeLookup = object : SpanSizeLookup() {
 //            override fun getSpanSize(position: Int): Int {
