@@ -12,8 +12,8 @@
         android:theme="@style/Theme.GAmazingTask"
         tools:targetApi="31">
         <activity
-            android:name=".activity.InfiniteImageMoveActivity"
-            android:exported="true">
+            android:name=".activity.FillBoxesActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,14 +21,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activity.InfiniteImageMoveActivity"
+            android:exported="true"/>
+        <activity
             android:name=".activity.TouchEventActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".activity.ScrollBehaviourActivity"
             android:exported="true" />

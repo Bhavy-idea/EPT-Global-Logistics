@@ -5,9 +5,9 @@
         android:startColor="#2B789A" />
     <!--    <corners android:radius="30dp" />-->
 
-    <corners
-        android:bottomLeftRadius="@dimen/dp_4"
-        android:bottomRightRadius="@dimen/dp_50"
-        android:topLeftRadius="@dimen/dp_50"
-        android:topRightRadius="@dimen/dp_4" />
+<!--    <corners-->
+<!--        android:bottomLeftRadius="@dimen/dp_4"-->
+<!--        android:bottomRightRadius="@dimen/dp_50"-->
+<!--        android:topLeftRadius="@dimen/dp_50"-->
+<!--        android:topRightRadius="@dimen/dp_4" />-->
 </shape>

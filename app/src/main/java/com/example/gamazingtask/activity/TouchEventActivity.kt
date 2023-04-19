@@ -2,7 +2,6 @@ package com.example.gamazingtask.activity
 
 import android.annotation.*
 import android.graphics.Color
-import android.graphics.PointF
 import android.os.*
 import android.view.*
 import android.view.View.*
@@ -45,21 +44,23 @@ class TouchEventActivity : AppCompatActivity() {
                     val view = LayoutInflater.from(this).inflate(R.layout.item_view, null, false) as View
                     view.layoutParams = ViewGroup.LayoutParams(200, 200)
                     view.setBackgroundColor(Color.parseColor(hexCodeGenerator()))
-                    view.x = event.x - view.width/2
-                    view.y = event.y - view.height/2
+
+                    view.x = event.x - 100
+                    view.y = event.y - 100
 
                     listOfView.add(view)
 
                     view.setOnTouchListener(OnTouchListener { _, events ->
 
-                        val x = events.x + view.width/2
-                        val y = events.y + view.height/2
+                        val x = events.x + (view.x-100)
+                        val y = events.y + (view.y-100)
 
                         when (events.action) {
                             MotionEvent.ACTION_MOVE -> {
                                 view.x = x
                                 view.y = y
                             }
+
                         }
                         true
                     })

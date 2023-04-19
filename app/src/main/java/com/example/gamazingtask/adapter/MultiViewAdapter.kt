@@ -18,7 +18,49 @@ var index = 0
 class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : RecyclerView.Adapter<MultiViewAdapter.CheckBoxHolder>() {
 
     @SuppressLint("InflateParams")
-    inner class CheckBoxHolder(var view: LayoutInflateBinding) : RecyclerView.ViewHolder(view.root) {}
+    inner class CheckBoxHolder(var view: LayoutInflateBinding) : RecyclerView.ViewHolder(view.root) {
+
+        fun bind(item : MultiData){
+
+            val oldCheckBoxList = ArrayList(item.checkBoxList)
+
+            view.buttonAddCheckbox.setOnClickListener {
+
+                if (arrayListOfMultiViews[position].checkBoxList.size < 3) {
+                    val addedCheckBox = addCheckbox(it.context)
+                    view.linearLayoutCheckBox.addView(addedCheckBox)
+                    arrayListOfMultiViews[position].checkBoxList.add(addedCheckBox)
+
+                } else {
+                    Toast.makeText(it.context, "Cannot add more then 3 items", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+            view.buttonAddRadioButton.setOnClickListener {
+
+                if (arrayListOfMultiViews[position].radioButtonList.size < 3) {
+                    val addedRadioButton = addRadioButton(it.context)
+                    view.linearLayoutRadioButton.addView(addedRadioButton)
+                    arrayListOfMultiViews[position].radioButtonList.add(addedRadioButton)
+                }else {
+                    Toast.makeText(it.context, "Cannot add more then 3 items", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            view.buttonAddEditText.setOnClickListener {
+
+                if (arrayListOfMultiViews[position].editTextList.size < 3) {
+                    val addedEditText = addEditText(it.context)
+                    view.linearLayoutEditText.addView(addedEditText)
+                    arrayListOfMultiViews[position].editTextList.add(addedEditText)
+                }else {
+                    Toast.makeText(it.context, "Cannot add more then 3 items", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CheckBoxHolder {
         Log.d("data", "CREATE VIEW HOLDER CALLED $index")
@@ -29,65 +71,14 @@ class MultiViewAdapter(var arrayListOfMultiViews: ArrayList<MultiData>) : Recycl
 
     override fun onBindViewHolder(holder: CheckBoxHolder, position: Int) {
 
+
+        holder.bind(arrayListOfMultiViews[position])
+
         holder.view.linearLayoutCheckBox.removeAllViews()
         holder.view.linearLayoutRadioButton.removeAllViews()
         holder.view.linearLayoutEditText.removeAllViews()
 
-        val sizeOfCheckboxList = arrayListOfMultiViews[position].checkBoxList.size
 
-        for (i in 0 until sizeOfCheckboxList) {
-            holder.view.linearLayoutCheckBox.removeView(arrayListOfMultiViews[position].checkBoxList[i])
-            holder.view.linearLayoutCheckBox.addView(arrayListOfMultiViews[position].checkBoxList[i], i)
-        }
-
-        val sizeOfRadiobuttonList = arrayListOfMultiViews[position].radioButtonList.size
-
-        for (i in 0 until sizeOfRadiobuttonList) {
-            holder.view.linearLayoutRadioButton.removeView(arrayListOfMultiViews[position].radioButtonList[i])
-            holder.view.linearLayoutRadioButton.addView(arrayListOfMultiViews[position].radioButtonList[i], i)
-        }
-
-        val sizeOfEditTextList = arrayListOfMultiViews[position].editTextList.size
-
-        for (i in 0 until sizeOfEditTextList) {
-            holder.view.linearLayoutEditText.removeView(arrayListOfMultiViews[position].editTextList[i])
-            holder.view.linearLayoutEditText.addView(arrayListOfMultiViews[position].editTextList[i], i)
-        }
-
-        holder.view.buttonAddCheckbox.setOnClickListener {
-
-            if (arrayListOfMultiViews[position].checkBoxList.size < 3) {
-                val addedCheckBox = addCheckbox(it.context)
-                holder.view.linearLayoutCheckBox.addView(addedCheckBox)
-                arrayListOfMultiViews[position].checkBoxList.add(addedCheckBox)
-
-            } else {
-                Toast.makeText(it.context, "Cannot add more then 3 items", Toast.LENGTH_SHORT).show()
-            }
-
-        }
-
-        holder.view.buttonAddRadioButton.setOnClickListener {
-
-            if (arrayListOfMultiViews[position].radioButtonList.size < 3) {
-                val addedRadioButton = addRadioButton(it.context)
-                holder.view.linearLayoutRadioButton.addView(addedRadioButton)
-                arrayListOfMultiViews[position].radioButtonList.add(addedRadioButton)
-            }else {
-                Toast.makeText(it.context, "Cannot add more then 3 items", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        holder.view.buttonAddEditText.setOnClickListener {
-
-            if (arrayListOfMultiViews[position].editTextList.size < 3) {
-                val addedEditText = addEditText(it.context)
-                holder.view.linearLayoutEditText.addView(addedEditText)
-                arrayListOfMultiViews[position].editTextList.add(addedEditText)
-            }else {
-                Toast.makeText(it.context, "Cannot add more then 3 items", Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     private fun addCheckbox(context: Context): AppCompatCheckBox {
